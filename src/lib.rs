@@ -32,4 +32,7 @@ pub async fn autodiscover() -> Result<GT5> {
 }
 
 use anyhow::{Context, Result};
+
+pub use biometrics_template::BiometricsTemplate;
+pub use errors::Gt5Response;
 pub use gt5::GT5;
