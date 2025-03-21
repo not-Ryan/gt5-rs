@@ -8,7 +8,7 @@ mod send_command;
 pub async fn autodiscover() -> Result<GT5> {
     let device_info = nusb::list_devices()
         .context("Should list devices")?
-        .find(|d| d.vendor_id() == 0x2009 && d.product_id() == 0x7638)
+        .find(|d| d.vendor_id() == 0x2009 && d.product_string() == Some("USB-MASS STORAGE"))
         .context("No device found")?;
 
     let device = device_info.open()?;
