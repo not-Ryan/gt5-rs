@@ -1,9 +1,9 @@
 use anyhow::{Context, Ok, Result};
-use nusb::{Interface, transfer::RequestBuffer};
+use nusb::{transfer::RequestBuffer, Interface};
 use rand::random;
 use scsi::{
-    BufferPushable,
     scsi::commands::{CommandBlockWrapper, Direction},
+    BufferPushable,
 };
 
 use crate::commands::Commands;
@@ -101,7 +101,7 @@ fn get_wrapper(dir: Direction, buff_length: usize) -> Vec<u8> {
         .push_to_buffer(&mut buff)
         .expect("Could not push command wrapper to buffer");
 
-    buff[isi + 0] = 0xef;
+    buff[isi] = 0xef;
     buff[isi + 1] = match dir {
         Direction::IN => 0xff,
         Direction::OUT => 0xfe,

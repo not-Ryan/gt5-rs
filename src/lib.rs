@@ -13,7 +13,7 @@ pub async fn autodiscover() -> Result<GT5> {
 
     let device = device_info.open()?;
 
-    let iface = match device.claim_interface(0x0) {
+    let iface = match device.detach_and_claim_interface(0x0) {
         Ok(iface) => iface,
         Err(err) => {
             println!("Could not claim device: {err}");

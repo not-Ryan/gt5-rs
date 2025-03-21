@@ -1,4 +1,4 @@
-use anyhow::{Ok, Result, ensure};
+use anyhow::{ensure, Ok, Result};
 use nusb::Interface;
 use std::time::Duration;
 
